@@ -1,11 +1,11 @@
 package app
 
 import (
+	"bytes"
+	"encoding/json"
 	"github.com/gin-gonic/gin"
 	"io/ioutil"
-	"bytes"
 	"net/http"
-	"encoding/json"
 )
 
 func CallService(c *gin.Context) {
@@ -22,7 +22,7 @@ func CallService(c *gin.Context) {
 		if c.Request.Body != nil {
 			bodyBytes, err = ioutil.ReadAll(c.Request.Body)
 			if err != nil {
-				c.JSON(http.StatusInternalServerError, gin.H{"description": "Something went wrong when reading request body","detail":err.Error()})
+				c.JSON(http.StatusInternalServerError, gin.H{"description": "Something went wrong when reading request body", "detail": err.Error()})
 				return
 			}
 		}
@@ -31,7 +31,7 @@ func CallService(c *gin.Context) {
 	//Create request
 	proxyReq, err := http.NewRequest(c.Request.Method, serviceHost+c.Request.URL.Path, bytes.NewReader(bodyBytes))
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"description": "Something went wrong while creating the request to the service","detail":err.Error()})
+		c.JSON(http.StatusInternalServerError, gin.H{"description": "Something went wrong while creating the request to the service", "detail": err.Error()})
 		return
 	}
 

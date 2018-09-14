@@ -12,12 +12,12 @@ type User struct {
 	LastName             string `gorm:"null"`
 	Password             string `gorm:"null" json:"-"`
 	Email                string
-	GoogleID             string         `gorm:"null" json:"-"`
-	Phone                string         `gorm:"null"`
-	PasswordRecoveryCode string         `gorm:"null" json:"-"`
-	RoleID               uint           `gorm:"not null" json:"-"`
-	Role                 Role           `gorm:"ForeignKey:RoleID"`
-	Enabled              bool           `gorm:"default:true"`
+	GoogleID             string `gorm:"null" json:"-"`
+	Phone                string `gorm:"null"`
+	PasswordRecoveryCode string `gorm:"null" json:"-"`
+	RoleID               uint   `gorm:"not null" json:"-"`
+	Role                 Role   `gorm:"ForeignKey:RoleID"`
+	Enabled              bool   `gorm:"default:true"`
 }
 
 func GetUserById(id uint) (user User, found bool, err error) {
@@ -76,4 +76,3 @@ func GetUserPermissions(userID uint) ([]string, error) {
 	return permissionList, nil
 
 }
-

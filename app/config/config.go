@@ -19,11 +19,9 @@ type Config struct {
 	DB_PORT     string
 	DB_NAME     string
 
-	USER_ADMINISTRATION_SERVICE    string
-	POST_MANAGEMENT_SERVICE        string
-	NOTIFICATIONS_SERVICE        	string
-
-
+	USER_ADMINISTRATION_SERVICE string
+	POST_MANAGEMENT_SERVICE     string
+	NOTIFICATIONS_SERVICE       string
 }
 
 var instance *Config
@@ -48,8 +46,8 @@ func newConfig() Config {
 		CORS:       GetEnv("CORS", ""),
 
 		USER_ADMINISTRATION_SERVICE: GetEnv("USER_ADMINISTRATION_SERVICE", "http://localhost:5000"),
-		POST_MANAGEMENT_SERVICE: GetEnv("POST_MANAGEMENT_SERVICE", "http://localhost:5003"),
-		NOTIFICATIONS_SERVICE: GetEnv("NOTIFICATIONS_SERVICE", "http://localhost:5004"),
+		POST_MANAGEMENT_SERVICE:     GetEnv("POST_MANAGEMENT_SERVICE", "http://localhost:5003"),
+		NOTIFICATIONS_SERVICE:       GetEnv("NOTIFICATIONS_SERVICE", "http://localhost:5004"),
 
 		DB_TYPE:     GetEnv("DB_TYPE", "mysql"),
 		DB_USERNAME: GetEnv("DB_USERNAME", "root"),
@@ -57,7 +55,6 @@ func newConfig() Config {
 		DB_HOST:     GetEnv("DB_HOST", "127.0.0.1"),
 		DB_PORT:     GetEnv("DB_PORT", "3306"),
 		DB_NAME:     GetEnv("DB_NAME", "amazing-code-database"),
-
 	}
 }
 

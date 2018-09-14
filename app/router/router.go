@@ -102,9 +102,8 @@ func CreateRouter() {
 
 	notificator := router.Group("", middleware.AppendService(config.GetConfig().NOTIFICATIONS_SERVICE))
 	{
-		//Public
-		postManagement.GET("/post", app.CallService)
-
+		//Notifications
+		notificator.GET("/notification", middleware.ValidateToken(), app.CallService)
 
 	}
 
